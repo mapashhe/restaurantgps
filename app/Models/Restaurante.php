@@ -9,8 +9,8 @@ class Restaurante extends Model
 {
     use HasFactory;
     protected $primaryKey = "id";
+    public $timestamps = false;
+    public $incrementing = false;
 
-    protected $incrementing = false;
-
-    protected $fillable = [ "rating", "name", "site", "email", "phone", "street", "city", "state", "lat", "lng"];
+    protected $fillable = [ "id","rating", "name", "site", "email", "phone", "street", "city", "state", "lat", "lng"];
 }

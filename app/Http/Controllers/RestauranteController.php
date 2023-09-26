@@ -7,59 +7,32 @@ use Illuminate\Http\Request;
 
 class RestauranteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
-        //
+        return Restaurante::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $restaurante = Restaurante::create($request->post());
+        return response()->json($restaurante);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Restaurante $restaurante)
     {
-        //
+        return $restaurante;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Restaurante $restaurante)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Restaurante $restaurante)
     {
-        //
+        $restaurante->fill($request->post())->save();
+        return $restaurante;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Restaurante $restaurante)
     {
-        //
+        $restaurante->delete();
+        return "eliminado";
     }
 }

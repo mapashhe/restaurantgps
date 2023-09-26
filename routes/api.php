@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\RestauranteController;
 use App\Http\Controllers\SeedController;
+use App\Http\Controllers\StatisticsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get("/fillTable", [SeedController::class, "fillTable"]);
+Route::resource('restaurante', RestauranteController::class)->only(["index", "store", "update", "show", "destroy"]);
+Route::get("/restaurants/statistics/{latitude}/{longitude}/{radius}", [StatisticsController::class, "statistics"]);
