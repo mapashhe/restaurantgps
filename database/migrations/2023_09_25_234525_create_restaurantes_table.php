@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string("state");
             $table->decimal("lat", 8, 6);
             $table->decimal("lng", 9, 6);
+            $table->primary('id');
         });
     }
 

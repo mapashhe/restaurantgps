@@ -12,5 +12,5 @@ class Restaurante extends Model
 
     protected $incrementing = false;
 
-    protected $fillable = ["id", "rating", "name", "site", "email", "phone", "street", "city", "state", "lat", "lng"];
+    protected $fillable = [ "rating", "name", "site", "email", "phone", "street", "city", "state", "lat", "lng"];
 }
