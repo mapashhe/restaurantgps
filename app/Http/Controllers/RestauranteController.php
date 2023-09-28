@@ -24,7 +24,7 @@ class RestauranteController extends Controller
                 'name' => 'required|max:30|min:5',
                 'site' => 'required|max:30|min:5',
                 'email' => 'required|email',
-                'raiting' => 'required|integer|between:0,4',
+                'rating' => 'required|integer|between:0,4',
                 'phone' => 'required|max:10|min:10',
                 'street' => 'required|max:30',
                 'city' => 'required|max:20',
@@ -41,9 +41,9 @@ class RestauranteController extends Controller
                 'site.max' => 'Longitud de Sitio maxima: 30',
                 'site.min' => 'Longitud de Sitio minima: 5',
                 
-                'raiting.required' => 'Raiting requerido',
-                'raiting.integer' => 'Raiting debe ser un numero',
-                'raiting.between' => 'Raiting debe ser de 0 - 4',
+                'rating.required' => 'rating requerido',
+                'rating.integer' => 'rating debe ser un numero',
+                'rating.between' => 'rating debe ser de 0 - 4',
                 
                 'Phone.required' => 'Telefono requerido',
                 'Phone.max' => 'El telefono debe ser a 10 digitos',
@@ -94,7 +94,7 @@ class RestauranteController extends Controller
                 'name' => 'required|max:30|min:5',
                 'site' => 'required|max:30|min:5',
                 'email' => 'required|email',
-                'raiting' => 'required|integer|between:0,4',
+                'rating' => 'required|integer|between:0,4',
                 'phone' => 'required|max:10|min:10',
                 'street' => 'required|max:30',
                 'city' => 'required|max:20',
@@ -111,9 +111,9 @@ class RestauranteController extends Controller
                 'site.max' => 'Longitud de Sitio maxima: 30',
                 'site.min' => 'Longitud de Sitio minima: 5',
                 
-                'raiting.required' => 'Raiting requerido',
-                'raiting.integer' => 'Raiting debe ser un numero',
-                'raiting.between' => 'Raiting debe ser de 0 - 4',
+                'rating.required' => 'rating requerido',
+                'rating.integer' => 'rating debe ser un numero',
+                'rating.between' => 'rating debe ser de 0 - 4',
                 
                 'Phone.required' => 'Telefono requerido',
                 'Phone.max' => 'El telefono debe ser a 10 digitos',
