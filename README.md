@@ -1,66 +1,137 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# RestauranteGPS
 
-## About Laravel
+This is an API which connects to a data base loaded with restaurant locations, which functionality is to display information about the nearest restaurants within a radio of distance: restaurant count in the area, average rating of restaurants inside the area, and the standard deviation of rating of restaurants.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+## Authors
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- [@mapashhe](https://www.github.com/mapashhe)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## API Reference
 
-## Laravel Sponsors
+### Fill the restaurants table with the csv data
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+```http
+  GET /api/fillTable
+```
 
-### Premium Partners
+### Get all restaurants
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+```http
+  GET /api/restaurante
+```
 
-## Contributing
+### Register new restaurant
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```http
+  POST /api/restaurante
+```
 
-## Code of Conduct
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `rating`  | `int`    | **Required**. Raiting 0 - 4       |
+| `name`    | `string` | **Required**. Name of the restaurant |
+| `site`    | `string` | **Required**. Website |
+| `email`   | `string` | **Required**. Email contact |
+| `phone`   | `string` | **Required**. Phone contact |
+| `street`  | `string` | **Required**. Address |
+| `city`    | `string` | **Required**. Address city |
+| `state`   | `string` | **Required**. Address state |
+| `lat`     | `decimal(8,6)` | **Required**. Latitude of the location |
+| `lng`     | `decimal(9,6)` | **Required**. Longitude of the location |
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+#### Example of request body
+{
+    "rating": 4,
+    "name": "Sandwichito",
+    "site": "https://sandwichito.mx",
+    "email": "san@dwich.com",
+    "phone": "6864459774",
+    "street": "Altavista",
+    "city": "Mexicali",
+    "state": "Baja California",
+    "lat": "19.4681",
+    "lng":"-99.573000"
+}
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Update restaurant
 
-## License
+```http
+  PUT /api/restaurante/{id}
+```
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `rating`  | `int`    | **Required**. Raiting 0 - 4       |
+| `name`    | `string` | **Required**. Name of the restaurant |
+| `site`    | `string` | **Required**. Website |
+| `email`   | `string` | **Required**. Email contact |
+| `phone`   | `string` | **Required**. Phone contact |
+| `street`  | `string` | **Required**. Address |
+| `city`    | `string` | **Required**. Address city |
+| `state`   | `string` | **Required**. Address state |
+| `lat`     | `decimal(8,6)` | **Required**. Latitude of the location |
+| `lng`     | `decimal(9,6)` | **Required**. Longitude of the location |
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+#### Example of request body
+{
+    "rating": 4,
+    "name": "Sandwichito",
+    "site": "https://sandwichito.mx",
+    "email": "san@dwich.com",
+    "phone": "6864459774",
+    "street": "Altavista",
+    "city": "Mexicali",
+    "state": "Baja California",
+    "lat": "19.4681",
+    "lng":"-99.573000"
+}
+
+### View restaurant
+
+```http
+  GET /api/restaurante/{id}
+```
+
+### Delete restaurant
+
+```http
+  DELETE /api/restaurante/{id}
+```
+
+### Statistics
+Shows the restaurants count, restaurants average raiting, and standard deviation of raiting within a radius (in meters) from a locations latitude and longitude
+```http
+  GET /api/restaurants/statistics/{latitude}/{longitude}/{radius}
+```
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `latitude`  | `decimal(8,6)`    | **Required**. Latitude of location       |
+| `longitude`    | `decimal(9,6)` | **Required**. Longitude of location |
+| `radius`    | `int` | **Required**. Radius of the locacion (in meters) |
+
+#### Request example
+ ```http
+  GET /api/restaurants/statistics/19.4381426/-99.1293633/200
+```
+
+
+#### Successful response
+    HTTP/1.1 200
+    Content-Type: application/json
+
+    {
+        "count": 12,
+        "avg_raiting": "2.25",
+        "std_dev": 1.47
+    }
+
+
+## Visual help
+You can visualize the csv locations on a google map here:
+
+https://www.google.com/maps/d/u/0/edit?mid=1z8cHtG_amAj43WjkdZnObFAtJTi1mu4&usp=sharing 
